@@ -4,7 +4,6 @@
 
 // Приклад аргумента 'test_folder/one.txt'
 
-const path = require('path');
 const fs = require('fs');
 const getAbsolutePath = require('./01');
 

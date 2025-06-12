@@ -28,14 +28,11 @@ module.exports = (folderName) => {
         const obj = { name, ext };
         data.push(obj);
       }
-      // console.log('not empty folder', data);
       return data;
     } else {
-      // console.log('empty folder', data);
       return data;
     }
   } else {
-    // console.log('not exists folder', false);
     return false;
   }
 };
