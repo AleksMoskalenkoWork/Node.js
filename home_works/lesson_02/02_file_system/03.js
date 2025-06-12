@@ -4,3 +4,20 @@
 
 // Приклад аргумента 'test_folder/one.txt'
 
+const path = require('path');
+const fs = require('fs');
+const getAbsolutePath = require('./01');
+
+module.exports = (fileName) => {
+  try {
+    const filePath = getAbsolutePath(fileName);
+    const stats = fs.statSync(filePath);
+
+    if (stats.isFile()) {
+      return stats.size;
+    }
+    return 0;
+  } catch (error) {
+    return 0;
+  }
+};

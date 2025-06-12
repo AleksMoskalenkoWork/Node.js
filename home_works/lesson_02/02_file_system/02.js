@@ -1,3 +1,9 @@
 // Task 02
 
 // Створіть анонімний модуль у цьому файлі, який приймає повний шлях до теки та повертає true або false залежно від того, чи існує вказана тека.
+
+const path = require('path');
+
+module.exports = (folderPathAbsolute) => {
+  return path.isAbsolute(folderPathAbsolute);
+};

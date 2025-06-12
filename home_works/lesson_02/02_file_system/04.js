@@ -9,3 +9,33 @@
 // ]
 
 // Приклад аргумента 'test_folder'
+
+const path = require('path');
+const fs = require('fs');
+const getAbsolutePath = require('./01');
+
+module.exports = (folderName) => {
+  const data = [];
+  const folderPath = getAbsolutePath(folderName);
+  const isExists = fs.existsSync(folderPath);
+
+  if (isExists === true) {
+    const files = fs.readdirSync(folderPath);
+    if (files.length > 0) {
+      for (file of files) {
+        const ext = path.extname(file).slice(1);
+        const name = path.basename(file, path.extname(file));
+        const obj = { name, ext };
+        data.push(obj);
+      }
+      // console.log('not empty folder', data);
+      return data;
+    } else {
+      // console.log('empty folder', data);
+      return data;
+    }
+  } else {
+    // console.log('not exists folder', false);
+    return false;
+  }
+};

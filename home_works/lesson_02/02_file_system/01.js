@@ -4,8 +4,8 @@
 
 // Прикладом теки є тека test_folder.
 
+const path = require('path');
 
-
-
-
-
+module.exports = (folderName) => {
+  return path.resolve(__dirname, folderName);
+};
