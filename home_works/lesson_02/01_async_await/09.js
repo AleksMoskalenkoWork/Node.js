@@ -13,3 +13,5 @@ Promise.resolve().then(() => console.log(4));
 process.nextTick(() => console.log(5));
 
 console.log(6);
+
+// result 1,6,5,4,2,3

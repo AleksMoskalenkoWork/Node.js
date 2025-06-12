@@ -11,3 +11,5 @@ Promise.resolve().then(() => {
 });
 
 console.log(3);
+
+// result 3,1,2
