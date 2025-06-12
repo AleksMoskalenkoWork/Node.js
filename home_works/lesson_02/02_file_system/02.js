@@ -2,8 +2,11 @@
 
 // Створіть анонімний модуль у цьому файлі, який приймає повний шлях до теки та повертає true або false залежно від того, чи існує вказана тека.
 
-const path = require('path');
+const fs = require('fs');
 
 module.exports = (folderPathAbsolute) => {
-  return path.isAbsolute(folderPathAbsolute);
+  return (
+    fs.existsSync(folderPathAbsolute) &&
+    fs.statSync(folderPathAbsolute).isDirectory()
+  );
 };

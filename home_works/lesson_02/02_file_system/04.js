@@ -12,27 +12,15 @@
 
 const path = require('path');
 const fs = require('fs');
-const getAbsolutePath = require('./01');
 
 module.exports = (folderName) => {
-  const data = [];
-  const folderPath = getAbsolutePath(folderName);
-  const isExists = fs.existsSync(folderPath);
+  const folderPath = path.resolve(__dirname, folderName);
 
-  if (isExists === true) {
-    const files = fs.readdirSync(folderPath);
-    if (files.length > 0) {
-      for (file of files) {
-        const ext = path.extname(file).slice(1);
-        const name = path.basename(file, path.extname(file));
-        const obj = { name, ext };
-        data.push(obj);
-      }
-      return data;
-    } else {
-      return data;
-    }
-  } else {
-    return false;
-  }
+  if (!fs.existsSync(folderPath)) return false;
+  const files = fs.readdirSync(folderPath);
+
+  return files.map((file) => ({
+    ext: path.extname(file).slice(1),
+    name: path.basename(file, path.extname(file)),
+  }));
 };

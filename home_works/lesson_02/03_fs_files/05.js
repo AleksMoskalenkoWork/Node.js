@@ -9,7 +9,7 @@ module.exports = (readFile, writeFile) => {
     return;
   } else {
     const inputData = fs.readFileSync(readFile, 'utf-8');
-    return fs.writeFileSync(writeFile, inputData, {
+    fs.writeFileSync(writeFile, inputData, {
       encoding: 'utf-8',
       flag: 'w',
     });

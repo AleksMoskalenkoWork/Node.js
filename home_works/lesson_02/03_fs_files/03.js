@@ -6,5 +6,5 @@ const fs = require('fs');
 
 module.exports = (string) => {
   const fileName = 'file_03.txt';
-  return fs.writeFileSync(fileName, string, { encoding: 'utf-8', flag: 'w' });
+  fs.writeFileSync(fileName, string, { encoding: 'utf-8', flag: 'w' });
 };

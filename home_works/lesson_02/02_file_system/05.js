@@ -6,13 +6,12 @@
 
 const path = require('path');
 const fs = require('fs');
-const getAbsolutePath = require('./01');
 
 const folderName = 'test_folder';
 
-module.exports = () => {
+module.exports = (folderName) => {
   const data = [];
-  const folderPath = getAbsolutePath(folderName);
+  const folderPath = path.resolve(__dirname, folderName);
   const files = fs.readdirSync(folderPath);
 
   for (file of files) {

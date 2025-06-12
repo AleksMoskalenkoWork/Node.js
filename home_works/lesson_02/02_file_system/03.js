@@ -5,11 +5,10 @@
 // Приклад аргумента 'test_folder/one.txt'
 
 const fs = require('fs');
-const getAbsolutePath = require('./01');
 
 module.exports = (fileName) => {
   try {
-    const filePath = getAbsolutePath(fileName);
+    const filePath = path.resolve(__dirname, fileName);
     const stats = fs.statSync(filePath);
 
     if (stats.isFile()) {

@@ -8,5 +8,5 @@ module.exports = (arrayOfStrings) => {
   const fileName = 'file_04.txt';
   const string = arrayOfStrings.join('\r\n');
 
-  return fs.writeFileSync(fileName, string, { encoding: 'utf-8', flag: 'w' });
+  fs.writeFileSync(fileName, string, { encoding: 'utf-8', flag: 'w' });
 };
