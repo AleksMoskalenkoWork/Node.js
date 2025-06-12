@@ -4,6 +4,8 @@
 
 // Приклад аргумента: 'test.file'
 
+const fs = require('fs');
 
-
-
+module.exports = (fileName) => {
+  return fs.readFileSync(fileName, 'utf-8');
+};
