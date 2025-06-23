@@ -1,4 +1,3 @@
-
 document.querySelector('#uploadForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -16,14 +15,15 @@ document.querySelector('#uploadForm').addEventListener('submit', async (e) => {
   try {
     const response = await fetch('/upload-file', {
       method: 'POST',
-      body: formData // Content-Type выставится автоматически
+      body: formData, // Content-Type выставится автоматически
     });
 
     if (response.ok) {
       const text = await response.text();
       console.log(text);
     } else {
-      console.log('some error');
+      const error = await response.json();
+      console.log(error.error);
     }
   } catch (error) {
     console.error('Ошибка:', error);

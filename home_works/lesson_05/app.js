@@ -24,13 +24,17 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
+  const ext = path.extname(file.originalname);
+
   if (
-    !file.mimetype.endsWith('x-zip-compressed') &&
-    !file.mimetype.endsWith('zip')
+    ext === '.zip' ||
+    file.mimetype === 'application/zip' ||
+    file.mimetype === 'application/x-zip-compressed'
   ) {
-    return cb(null, false);
+    return cb(null, true);
   }
-  cb(null, 'uploads/');
+
+  return cb(new Error('only zip files'));
 };
 
 const limits = {
@@ -50,13 +54,21 @@ app.get('/', (req, res) => {
 app.post('/upload-file', (req, res) => {
   upload.single('file')(req, res, (err) => {
     if (err) {
+      if (err.message === 'only zip files') {
+        return res.status(400).json({ error: err.message });
+      }
+
       if (err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).json({ error: 'The file is too large' });
       }
-    }
 
-    if (!req.file) {
-      return res.status(400).json({ error: 'only zip files' });
+      if (err instanceof multer.MulterError) {
+        return res
+          .status(400)
+          .json({ error: 'Upload file error:' + err.message });
+      }
+
+      return res.status(500).json({ error: 'Unexpected server error' });
     }
 
     return res.send('the file was uploaded successfully');
