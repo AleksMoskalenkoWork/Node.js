@@ -71,7 +71,7 @@ app.post('/upload-file', (req, res) => {
       return res.status(500).json({ error: 'Unexpected server error' });
     }
 
-    return res.send('the file was uploaded successfully');
+    res.send('the file was uploaded successfully');
   });
 });
 
