@@ -1,7 +1,7 @@
 const config = require('config');
 const path = require('path');
 const fs = require('fs');
-const messageJson = require('../message.json');
+const messageJson = require('./message.json');
 
 const express = require('express');
 const app = express();
