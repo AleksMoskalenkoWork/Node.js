@@ -1,6 +1,7 @@
 const config = require('config');
 const path = require('path');
 const fs = require('fs');
+const he = require('he');
 const messageJson = require('./message.json');
 
 const express = require('express');
@@ -26,16 +27,16 @@ app.post('/form', (req, res) => {
   const fileName = path.join(__dirname, 'message.json');
   const createTime = new Date().toLocaleTimeString();
   const feedbackTemplate = {
-    createTime: `${createTime}`,
-    username: `${username}`,
-    message: `${message}`,
+    createTime: he.encode(`${createTime}`),
+    username: he.encode(`${username}`),
+    message: he.encode(`${message}`),
   };
 
   messageJson.push(feedbackTemplate);
 
   fs.writeFile(fileName, JSON.stringify(messageJson, null, 2), (error) => {
     if (error) throw new Error('Sorry! Something went wrong.');
-    res.redirect('/form');
+    res.redirect('/guests');
   });
 });
 
