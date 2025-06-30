@@ -1,7 +1,7 @@
 const path = require('path');
 const morgan = require('morgan');
 const messageRoutes = require('./routes/messageRoutes');
-const errorController = require('./controllers/errorController');
+const errorRoute = require('./routes/errorRoute');
 
 const express = require('express');
 const app = express();
@@ -13,7 +13,10 @@ app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', messageRoutes);
+app.use('/', errorRoute);
 
-app.use(errorController.error);
+app.use((req, res) => {
+  res.redirect('/not-found');
+});
 
 module.exports = app;
