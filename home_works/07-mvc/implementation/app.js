@@ -1,6 +1,7 @@
 const path = require('path');
 const morgan = require('morgan');
 const messageRoutes = require('./routes/messageRoutes');
+const errorController = require('./controllers/errorController');
 
 const express = require('express');
 const app = express();
@@ -13,8 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', messageRoutes);
 
-app.use((req, res) => {
-  res.status(404).render('404');
-});
+app.use(errorController.error);
 
 module.exports = app;
