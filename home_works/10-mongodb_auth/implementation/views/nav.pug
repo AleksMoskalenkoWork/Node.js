@@ -1,0 +1,18 @@
+nav
+    ul(style="display:flex; justify-content: space-between; list-style-type:none")
+        li
+            a(href="/") Main
+        li
+            a(href="/common") Common
+        li
+            a(href="/dashboard") Dashboard
+        li
+            if(!email)
+                a(href="/register") Registration
+        li
+            if (email)
+                a(href="/logout") Logout
+            else
+                a(href="/login") Login
+        if (email)
+            li= email

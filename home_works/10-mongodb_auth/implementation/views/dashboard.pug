@@ -1,0 +1,26 @@
+include header
+
+.container
+    
+    h1 Hi, #{email}!
+    h2 Dashboard
+    p Ви увійшли в систему.
+    div
+      a(href="/logout") Вийти
+    div
+      table
+        tr
+          th
+          th title
+          th description
+          th assignee
+          th role
+        each item, index in tasks
+          tr
+            td #{index + 1}
+            td #{item.title}
+            td #{item.description}
+            td #{item.assignee}
+            td #{item.role}
+
+
