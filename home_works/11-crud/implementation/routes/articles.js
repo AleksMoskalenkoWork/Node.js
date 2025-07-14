@@ -48,6 +48,10 @@ module.exports = function ({ articlesCollection }) {
 
   router.post('/:url/edit', async (req, res) => {
     const { title, content, url, tags, published } = req.body;
+
+    const updateTags =
+      tags && tags.length > 0 ? tags.split(',').map((tag) => tag.trim()) : [];
+
     await articlesCollection.updateOne(
       { url: req.params.url },
       {
@@ -55,7 +59,7 @@ module.exports = function ({ articlesCollection }) {
           title,
           content,
           url,
-          tags: tags.split(', '),
+          tags: updateTags,
           published: published === 'on',
           updatedAt: new Date(),
         },
