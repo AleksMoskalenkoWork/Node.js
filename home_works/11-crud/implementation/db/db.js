@@ -1,7 +1,6 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient } = require('mongodb');
 const config = require('config');
 
-const mongoUrl = config.mongoUrl;
 const client = new MongoClient(config.mongoUrl);
 
 async function connectDB() {
@@ -14,7 +13,7 @@ async function connectDB() {
   };
 }
 
-module.exports = { 
-  connectDB, 
-  "mongoUrl": config.mongoUrl
+module.exports = {
+  connectDB,
+  mongoUrl: config.mongoUrl,
 };
