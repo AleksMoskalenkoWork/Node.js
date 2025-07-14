@@ -15,14 +15,19 @@ module.exports = function ({ articlesCollection }) {
   router.post('/new', async (req, res) => {
     const { title, content, url, tags, published } = req.body;
 
-    await articlesCollection.insertOne({
+    const articleTemplate = {
       title,
       content,
       url,
-      tags,
       published: published === 'on',
       createdAt: new Date(),
-    });
+    };
+
+    if (tags && tags.length > 0) {
+      articleTemplate.tags = tags.split(',').map((tag) => tag.trim());
+    }
+
+    await articlesCollection.insertOne(articleTemplate);
     res.redirect('/articles');
   });
 

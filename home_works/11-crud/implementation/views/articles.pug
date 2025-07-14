@@ -9,10 +9,11 @@ include header
     div
         each article in articles
             div
-                if article.tags && article.tags.length
-                div
-                    each tag in article.tags
-                        span.tag= tag
+                if article.tags
+                    if article.tags.length
+                        div
+                            each tag in article.tags
+                                span.tag= tag
                 div
                     a(href=`/articles/${article.url}`)= article.title
                 div
