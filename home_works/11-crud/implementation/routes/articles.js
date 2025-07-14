@@ -39,8 +39,10 @@ module.exports = function ({ articlesCollection }) {
   router.get('/:url/edit', async (req, res) => {
     const article = await articlesCollection.findOne({ url: req.params.url });
 
+    const tags = article.tags ? article.tags.join(', ') : '';
+
     res.render('article-form', {
-      tags: article.tags.join(', '),
+      tags,
       article,
       action: `/articles/${article.url}/edit`,
     });
