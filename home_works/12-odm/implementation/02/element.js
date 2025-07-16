@@ -24,8 +24,11 @@ const elementSchema = new mongoose.Schema(
     },
     vin: {
       type: String,
-      match: [/^[A-HJ-NPR-Z0-9]$/],
+      match: [/^[A-HJ-NPR-Z0-9]+$/],
+      minlength: 17,
       maxlength: 17,
+      // or
+      // match: [/^[A-HJ-NPR-Z0-9]{17}$/],
     },
   },
   {

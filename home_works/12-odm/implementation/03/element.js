@@ -13,9 +13,11 @@ const elementSchema = new mongoose.Schema(
     },
     birthDate: {
       type: String,
+      match: [/^\d{4}-\d{2}-\d{2}$/],
     },
     email: {
       type: String,
+      match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/],
     },
     phone: {
       type: String,
