@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "cross-env nodemon index.js"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "mongoose": "^8.16.3",
+    "nodemon": "^3.1.10"
+  }
+}
