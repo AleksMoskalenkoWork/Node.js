@@ -1,0 +1,24 @@
+
+.container
+    
+    h1 Статті
+    hr
+    div
+        each article in articles
+            h1= article.title
+            p= article.content
+            hr
+            if !article.comments.length
+                p Коментарів немає
+            else
+                each comment in article.comments
+                    p= comment
+                    p= comment.date
+                    p= comment.text
+                    hr
+            div
+                form(method="POST", action=`/${article.url}/comments`)
+                    div
+                        textarea(name="comment", placeholder="Comment")
+                    div
+                        button(type="submit") Зберегти
