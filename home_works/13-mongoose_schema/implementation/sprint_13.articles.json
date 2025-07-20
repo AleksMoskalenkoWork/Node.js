@@ -1,0 +1,64 @@
+[
+  {
+    "_id": {
+      "$oid": "687c9b2bd124b56557d39427"
+    },
+    "title": "Перший пост",
+    "url": "first_url",
+    "content": "Це перший пост у нашій системі!",
+    "__v": 7,
+    "comments": [
+      {
+        "visible": true,
+        "text": "First comment",
+        "_id": {
+          "$oid": "687ced1d0b398a91823abd87"
+        },
+        "date": {
+          "$date": "2025-07-20T13:20:29.270Z"
+        },
+        "createdAt": {
+          "$date": "2025-07-20T13:20:29.275Z"
+        },
+        "updatedAt": {
+          "$date": "2025-07-20T13:20:29.275Z"
+        }
+      },
+      {
+        "visible": true,
+        "text": "Second comment",
+        "_id": {
+          "$oid": "687cef87f6c3dfcffad7e62b"
+        },
+        "date": {
+          "$date": "2025-07-20T13:30:47.063Z"
+        },
+        "createdAt": {
+          "$date": "2025-07-20T13:30:47.069Z"
+        },
+        "updatedAt": {
+          "$date": "2025-07-20T13:30:47.069Z"
+        }
+      },
+      {
+        "visible": true,
+        "text": "Therd comment",
+        "_id": {
+          "$oid": "687cf5a18f8ebb10e740c40d"
+        },
+        "date": {
+          "$date": "2025-07-20T13:56:49.371Z"
+        },
+        "createdAt": {
+          "$date": "2025-07-20T13:56:49.376Z"
+        },
+        "updatedAt": {
+          "$date": "2025-07-20T13:56:49.376Z"
+        }
+      }
+    ],
+    "updatedAt": {
+      "$date": "2025-07-20T13:56:49.377Z"
+    }
+  }
+]

@@ -1,6 +1,4 @@
-
-.container
-    
+div    
     h1 Статті
     hr
     div
@@ -8,11 +6,11 @@
             h1= article.title
             p= article.content
             hr
+            h2 Коментарі
             if !article.comments.length
                 p Коментарів немає
             else
                 each comment in article.comments
-                    p= comment
                     p= comment.date
                     p= comment.text
                     hr
