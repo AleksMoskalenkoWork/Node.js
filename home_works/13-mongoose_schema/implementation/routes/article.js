@@ -8,7 +8,6 @@ module.exports = () => {
       const articles = await Article.find();
       res.render('articles', { articles });
     } catch (error) {
-      console.log(error);
       res.status(500).send('Server error');
     }
   });
