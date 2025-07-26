@@ -1,0 +1,9 @@
+include header
+
+.container
+    
+    h1 Main
+
+    each item in article
+        h5
+            a(href=`/articles/${item.url}`)= item.text
