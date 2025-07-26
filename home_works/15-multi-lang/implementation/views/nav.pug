@@ -1,18 +1,12 @@
 nav
-    ul(style="display:flex; justify-content: space-between; list-style-type:none")
-        li
-            a(href="/") Main
-        li
-            a(href="/articles") Articles
-        li
-            a(href="/dashboard") Dashboard
-        li
-            if (user)
-                a(href="/logout") Logout
-            else
-                a(href="/login") Login
-        li
-            if (!user)
-                a(href="/signin") Register
-        if (user)
-            li= email
+    ul(style="display: flex; justify-content: flex-end; list-style-type: none")
+        li(style="margin-right: 20px")
+            a(href=`/${lang}`)= __('main')
+        li(style="margin-right: 20px")
+            a(href=`/${lang}/page`)= __('page')
+        each item in langs
+            li
+                if (item === lang)
+                    span(style="margin-right: 4px")= item
+                else
+                    a(href=`/${item}${clearPath}` style="margin-right: 4px")= item

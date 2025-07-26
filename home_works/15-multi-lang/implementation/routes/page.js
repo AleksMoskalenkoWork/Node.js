@@ -6,7 +6,8 @@ module.exports = () => {
   router.get('/', async (req, res) => {
     try {
       const articles = await Article.find();
-      res.render('articles', { articles });
+      const article = articles[1];
+      res.render('page', { article });
     } catch (error) {
       res.status(500).send('Server error');
     }

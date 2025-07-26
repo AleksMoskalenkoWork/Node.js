@@ -4,14 +4,14 @@ const router = express.Router();
 
 module.exports = function () {
   router.get('/', async (req, res) => {
-    const article = await Article.findOne('Луї Блеріо');
-    res.render('main', { article });
+    try {
+      const articles = await Article.find();
+      const article = articles[0];
+      res.render('main', { article });
+    } catch (error) {
+      res.status(500).send('Server error');
+    }
   });
-
-  // router.get('/article/:url', async (req, res) => {
-  //   const article = await articlesCollection.findOne({ url: req.params.url });
-  //   res.render('article', { article });
-  // });
 
   return router;
 };
